@@ -4,6 +4,6 @@ help:
 
 .PHONY: install
 install:
-	@cp ./devops/pre_commit_hook.sh .git/hooks/pre-commit
+	@cp ./devops/fmt_sh.sh .git/hooks/pre-commit
 	@chmod +x .git/hooks/pre-commit
 
