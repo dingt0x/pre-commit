@@ -7,3 +7,7 @@ install:
 	@cp ./devops/fmt_sh.sh .git/hooks/pre-commit
 	@chmod +x .git/hooks/pre-commit
 
+.PHONY: fmt
+fmt:
+	@sh ./devops/fmt_sh.sh fmt
+
