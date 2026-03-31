@@ -1,10 +1,7 @@
 #!/bin/bash
 
-# ==========================================
-# 配置区
-# ==========================================
-INDENT=4             # 设定缩进为 4 个空格
-FILE_PATTERN="\.sh$" # 匹配 .sh 文件
+INDENT=4
+FILE_PATTERN="\.sh$"
 CHECK_CMD="shfmt -i $INDENT -d"
 FIX_CMD="shfmt -i $INDENT -w"
 
@@ -15,11 +12,11 @@ if [ -z "$STAGED_FILES" ]; then
 fi
 
 PASS=true
-INVALID_FILES=() # 数组：存放不合规的文件名
+INVALID_FILES=()
 
 for FILE in $STAGED_FILES; do
     if ! $CHECK_CMD "$FILE" >/dev/null 2>&1; then
-        INVALID_FILES+=("$FILE") # 加入待修复列表
+        INVALID_FILES+=("$FILE")
         PASS=false
     fi
 done
@@ -29,9 +26,7 @@ if [ "$PASS" = false ]; then
     echo "--------------------------------------------------"
     echo "📢 请执行以下命令进行一键修复："
     echo ""
-
     echo "    $FIX_CMD ${INVALID_FILES[*]}"
-
     echo ""
     echo "--------------------------------------------------"
     echo "🚨 提交已拦截，请修复并 git add 后再次尝试。"
